@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>German Verb Cards</title>
+  <link rel="stylesheet" href="./styles.css">
+</head>
+<body>
+  <div class="page-shell">
+    <header class="hero">
+      <div>
+        <p class="eyebrow">German Verb Trainer</p>
+        <h1>Study verbs, meanings, conjugations, and sentence practice.</h1>
+        <p class="hero-copy">
+          A lightweight flashcard app built from your verb list. Progress is saved in this browser on this device.
+        </p>
+      </div>
+      <div class="hero-stats" id="hero-stats"></div>
+    </header>
+
+    <main class="layout">
+      <aside class="sidebar">
+        <section class="panel">
+          <label class="label" for="search">Search verbs</label>
+          <input id="search" type="search" placeholder="e.g. gehen, help, travel">
+        </section>
+
+        <section class="panel">
+          <p class="label">Progress filter</p>
+          <div class="segmented" id="status-filter">
+            <button data-status="all" class="is-active">All</button>
+            <button data-status="new">New</button>
+            <button data-status="learning">Learning</button>
+            <button data-status="mastered">Mastered</button>
+          </div>
+        </section>
+
+        <section class="panel">
+          <p class="label">Study mode</p>
+          <div class="segmented" id="study-mode">
+            <button data-mode="flashcards" class="is-active">Flashcards</button>
+            <button data-mode="practice">Practice</button>
+          </div>
+        </section>
+
+        <section class="panel">
+          <p class="label">Import full list</p>
+          <textarea id="import-data" rows="7" placeholder="Paste the tab-separated verb list here to replace the starter deck."></textarea>
+          <button id="import-button" class="status-button import-button">Import pasted list</button>
+        </section>
+
+        <section class="panel">
+          <p class="label">Verb list</p>
+          <div id="verb-list" class="verb-list"></div>
+        </section>
+      </aside>
+
+      <section class="content">
+        <div id="empty-state" class="empty-state hidden">
+          No verbs match this filter.
+        </div>
+
+        <article id="card-view" class="card-view">
+          <div class="card-actions">
+            <button id="prev-verb" class="ghost-button">Previous</button>
+            <button id="shuffle-verb" class="ghost-button">Shuffle</button>
+            <button id="next-verb" class="ghost-button">Next</button>
+          </div>
+
+          <section class="flashcard" id="flashcard">
+            <div class="flashcard-face">
+              <p class="muted">German verb</p>
+              <h2 id="verb-word">-</h2>
+              <p class="rank" id="verb-rank"></p>
+              <div class="chips" id="verb-tags"></div>
+            </div>
+            <div class="flashcard-face secondary">
+              <p class="muted">Meaning</p>
+              <p id="verb-meaning" class="meaning"></p>
+            </div>
+          </section>
+
+          <section class="panel detail-panel">
+            <div class="panel-heading">
+              <h3>Present tense conjugation</h3>
+              <p class="hint">Generated automatically. Strong irregular verbs are partly covered with custom overrides.</p>
+            </div>
+            <div id="conjugation-grid" class="conjugation-grid"></div>
+          </section>
+
+          <section class="panel detail-panel">
+            <div class="panel-heading">
+              <h3>Practice sentences</h3>
+              <p class="hint">One sentence starter for each present-tense pronoun form.</p>
+            </div>
+            <div id="practice-list" class="practice-list"></div>
+          </section>
+
+          <section class="panel detail-panel">
+            <div class="panel-heading">
+              <h3>Learning progress</h3>
+            </div>
+            <div class="progress-actions">
+              <button data-progress="new" class="status-button">Mark New</button>
+              <button data-progress="learning" class="status-button">Mark Learning</button>
+              <button data-progress="mastered" class="status-button">Mark Mastered</button>
+            </div>
+            <div class="notes-wrap">
+              <label class="label" for="notes">Personal note</label>
+              <textarea id="notes" rows="4" placeholder="Add a memory hook, tricky form, or your own example."></textarea>
+            </div>
+          </section>
+        </article>
+      </section>
+    </main>
+  </div>
+
+  <script src="./verbs-data.js"></script>
+  <script src="./app.js"></script>
+</body>
+</html>
